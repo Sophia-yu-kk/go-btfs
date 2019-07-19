@@ -24,7 +24,7 @@ var storageUploadCmd = &cmds.Command{
 	},
 	Options: []cmds.Option{
 		cmds.Int64Option(uploadPriceOptionName, "p", "max price per GB of storage in BTT"),
-		cmds.Int64Option(replicationFactorOptionName, "replica", "replication factor for the file with erasure coding built-in").WithDefault(3),
+		cmds.Int64Option(replicationFactorOptionName, "replica", "replication factor for the file with erasure coding built-in").WithDefault(int64(3)),
 		cmds.StringOption(hostSelectModeOptionName, "mode", "based on mode to select the host and upload automatically").WithDefault("score"),
 		cmds.StringOption(hostSelectionOptionName, "list", "use only these hosts in order on CUSTOM mode"),
 	},
@@ -37,7 +37,7 @@ var storageUploadCmd = &cmds.Command{
 		} else {
 			// TODO: default value to be set as top-selected nodes' price
 			// currently set price with 10000
-			req.Options[uploadPriceOptionName] = int64(10000)
+			req.Options[uploadPriceOptionName] = int64(10)
 		}
 
 		mode, _ := req.Options[hostSelectModeOptionName].(string)
