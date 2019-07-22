@@ -35,7 +35,7 @@ cli arguments:
 `
 
 // APIPath is the path at which the API is mounted.
-const APIPath = "/api/v0"
+const APIPath = "/api/v1"
 
 var defaultLocalhostOrigins = []string{
 	"http://127.0.0.1:<port>",
