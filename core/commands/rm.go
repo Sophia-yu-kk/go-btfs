@@ -53,9 +53,21 @@ var RmCmd = &cmds.Command{
 			}
 		}
 
-		// All of the pins have been removed
-		req.Path = []string{"repo", "gc"}
-		RepoCmd.Subcommands["gc"].Run(req, res, env)
+		// Surgincal approach
+		p, err := path2.ParsePath(req.Arguments[0])
+		if err != nil {
+			return err
+		}
+
+		object, err := resolve.Resolve(req.Context, n.Namesys, n.Resolver, p)
+		if err != nil {
+			return err
+		}
+
+		for _, cid := range object.Links() {
+			n.Blockstore.DeleteBlock(cid.Cid)
+		}
+
 		return nil
 	},
 	Type: GcResult{},
