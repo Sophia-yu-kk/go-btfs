@@ -314,6 +314,12 @@ If you make changes to the protocol buffers, you will need to install the [proto
 
 [MIT](./LICENSE)
 
+### Soter
+
+If you want to ues btfs directly, you can use soter first.
+
+[Api of Soter](https://btfssoter.readme.io/docs/soter-interface-documentation)
+
 
 ## TODO
 #### Troubleshooting
